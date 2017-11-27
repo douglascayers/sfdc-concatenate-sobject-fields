@@ -29,6 +29,12 @@ My approach in the end was to develop an Invocable Apex class that could be call
 
 By implementing the solution as Invocable Apex this logic can be reused in Process Builder, Flow, REST API, and Apex triggers.
 
+
+Getting Started
+---------------
+
+This project comes with a sample Process Builder and Flow that show how to use the Invocable Apex class. The example runs on Account object and any time a record is edited then the automation concatenates the values in the `Site`, `AnnualRevenue`, and `NumberOfEmployees` fields into a concatenated sentence and stores the result in the `Description` field. No custom fields are used in this example to make it easier to deploy and test in both sandbox and production orgs. A test class is also included but since this is unmanaged code you may have to tweak it depending on your org's validation rules and requirements when creating accounts.
+
 ![screen shot](images/apex-inputs.png)
 
 ![screen shot](images/apex-outputs.png)
