@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Concatenate_SObject_Field_Values</name>
+        <label>Concatenate SObject Field Values</label>
+        <locationX>95</locationX>
+        <locationY>82</locationY>
+        <actionName>ConcatenateSObjectFieldValuesService</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Update_Account</targetReference>
+        </connector>
+        <inputParameters>
+            <name>fieldNames</name>
+            <value>
+                <elementReference>varFieldNames</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>varRecordId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>delimiter</name>
+            <value>
+                <stringValue>,</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>lastDelimiter</name>
+            <value>
+                <stringValue>and</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ignoreValues</name>
+            <value>
+                <stringValue>null, 0</stringValue>
+            </value>
+        </inputParameters>
+        <outputParameters>
+            <assignToReference>varConcatenatedText</assignToReference>
+            <name>concatenatedString</name>
+        </outputParameters>
+    </actionCalls>
+    <description>Example flow that accepts an account record id and comma-delimited list of fields whose values to concatenate together. Inspired by Jessica Pasley, https://twitter.com/JessicaPasley/status/934885281370656768</description>
+    <interviewLabel>Concatenate Account Field Values Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Concatenate Account Field Values Flow</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Account</name>
+        <label>Update Account</label>
+        <locationX>291</locationX>
+        <locationY>82</locationY>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varRecordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>varConcatenatedText</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <startElementReference>Concatenate_SObject_Field_Values</startElementReference>
+    <variables>
+        <name>varConcatenatedText</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Comma-delimited</description>
+        <name>varFieldNames</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>varRecordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

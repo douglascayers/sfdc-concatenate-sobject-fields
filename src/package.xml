@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>ConcatenateSObjectFieldValuesService</members>
+        <members>ConcatenateSObjectFieldValuesServiceTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Concatenate_Account_Field_Values-1</members>
+        <members>Concatenate_Account_Field_Values_Flow-1</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Concatenate_Account_Field_Values</members>
+        <members>Concatenate_Account_Field_Values_Flow</members>
+        <name>FlowDefinition</name>
+    </types>
+    <version>41.0</version>
+</Package>
